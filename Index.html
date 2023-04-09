@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="Uploading Page.css">
+<html>
+	<head>
+		<title>UUploading Page</title>
+	</head>
+    <body>
+        <div id="imgBox">
+            <header id="greeting"></header>
+            <p>Please click the uploading icon,and select a picture from your device(and add a caption if necessary)</p>
+            <div id="PrvText"></div>
+            <input type="file" accept="image/*" id="select" style="display: none;" onchange="loadFile(event)">
+            <label for="select"><img id="Upload" src="UPLOAD ICON.jpg"></label>
+            <textarea id="Text" placeholder="Captions"></textarea>
+        </div>
+    </body>
+	
+    <script>
+        let timen = new Date ;
+        let time = timen.getHours()
+        let greeting = " "
+        if(time < 12){
+            greeting = "Good Morning"
+        }
+        if(time >= 12){
+            greeting = "Good Afternoon"
+        }
+        if(time >= 17){
+            greeting = "Good Evening"
+        }
+        document.getElementById("greeting").innerText = greeting;
+
+        let Text = document.getElementById("Text");
+         Text.onkeyup = Text.onkeypress = function() {
+          document.getElementById("PrvText").innerText = this.value;  
+         }
+         let imgBox = document.getElementById("imgBox");
+         let loadFile = function(event) {
+            imgBox.style.backgroundImage = "url(" + URL.createObjectURL(event.target.files[0]) + ")"
+         }
+        
+    
+
+    </script>
+</html>
